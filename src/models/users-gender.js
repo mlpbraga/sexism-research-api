@@ -17,13 +17,5 @@ module.exports = (sequelize, types) => {
     tableName: 'user_gender',
     timestamps: false,
   });
-
-  UserGender.associate = function (models) {
-    const { Users } = models;
-    UserGender.belongsTo(Users, {
-      foreignKey: 'user_id',
-      sourceKey: 'user_id',
-    });
-  };
   return UserGender;
 };
