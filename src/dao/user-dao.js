@@ -60,14 +60,15 @@ const UserDao = {
         gender,
         password,
         deleted,
+      }).then(() => {
+        if (gender === 'other') {
+          otherGender = await UserGender.create({
+            user_id: email,
+            gender: reqParams.genderDescription,
+          });
+          console.log(otherGender);
+        }
       });
-      if (gender === 'other') {
-        otherGender = await UserGender.create({
-          user_id: email,
-          gender: reqParams.genderDescription,
-        });
-        console.log(otherGender);
-      }
     } catch (error) {
       logger.error(`UserDao :: ${error}`);
       logger.debug(error);
