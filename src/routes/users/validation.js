@@ -47,7 +47,7 @@ const postSchema = {
         message: 'Missing "password" parameter',
       });
     }),
-    genderDescription: Joi.string().optional(),
+    genderdescription: Joi.string().optional(),
   }),
 };
 

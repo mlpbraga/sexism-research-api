@@ -11,7 +11,7 @@ const UsersRequestFormatter = {
       name,
       birth,
       gender,
-      genderDescription,
+      genderdescription,
       password,
       token,
     } = reqParams.body;
@@ -24,7 +24,7 @@ const UsersRequestFormatter = {
         name,
         birth,
         gender,
-        genderDescription,
+        genderdescription,
         token,
         password: bcrypt.hashSync(password),
       },
