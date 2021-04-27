@@ -72,7 +72,7 @@ const UserDao = {
     if (gender === 'other') {
       otherGender = await UserGender.create({
         userId: email,
-        gender: reqParams.genderDescription,
+        gender: reqParams.genderdescription,
       });
       console.log(otherGender);
     }
