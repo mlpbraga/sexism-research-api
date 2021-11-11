@@ -11,9 +11,6 @@ const BaseRequestFormatter = {
         deleted,
       } = reqParams.query;
 
-      // const {
-      //   userna
-      // }
       if (q) {
         formattedParams.q = q;
       }

@@ -1,9 +1,6 @@
 const logger = require('../utils/logger');
 const VotesDAO = require('../dao/vote-dao');
 const VotesRequestFormatter = require('../formatters/request/votes');
-// const constant = require('../../../utils/constants');
-
-// const _ = require('lodash');
 
 module.exports = {
   async handlePost(req, res, next) {

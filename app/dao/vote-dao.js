@@ -1,7 +1,9 @@
 const { db, models } = require('../models');
+
 const { sequelize } = db;
 const logger = require('../utils/logger');
 const { throwBadRequest } = require('../utils/errors/bad-request');
+
 const { Votes } = models;
 
 const VotesDao = {
@@ -10,7 +12,7 @@ const VotesDao = {
     try {
       const voteId = await Votes.findAll({
         attributes: [sequelize.fn('MAX', sequelize.col('vote_id'))],
-        group: ["deleted"],
+        group: ['deleted'],
         raw: true,
       });
       response = await Votes.create({
