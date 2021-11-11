@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 const BaseRequestFormatter = require('../base');
 
-const UsersRequestFormatter = {
+const UsersResponseFormatter = {
   format(reqParams) {
     let formattedParams = BaseRequestFormatter.format(reqParams);
     const {
@@ -33,4 +33,4 @@ const UsersRequestFormatter = {
   },
 };
 
-module.exports = UsersRequestFormatter;
+module.exports = UsersResponseFormatter;

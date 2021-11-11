@@ -1,8 +1,6 @@
-const _ = require('lodash');
 const logger = require('../utils/logger');
 const CommentsDAO = require('../dao/comment-dao');
 const commentsResponseFormatter = require('../formatters/response/comments');
-// const constant = require('../../../utils/constants');
 
 module.exports = {
   async handleGetRandom(req, res, next) {

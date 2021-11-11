@@ -43,5 +43,9 @@ module.exports = (sequelize, types) => {
     timestamps: false,
   });
 
+  Users.associate = function (models) {
+    const { Users, Votes } = models;
+    Users.hasMany(Votes, { as: 'votes', foreignKey: 'user_id' });
+  };
   return Users;
 };

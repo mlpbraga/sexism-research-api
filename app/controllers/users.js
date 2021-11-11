@@ -2,16 +2,14 @@ const logger = require('../utils/logger');
 const UsersRequestFormatter = require(
   '../formatters/request/users',
 );
-const UsersDAO = require('../dao/user-dao');
-// const constant = require('../../../utils/constants');
+const UsersResponseFormatter = require('../formatters/response/users');
 
-// const _ = require('lodash');
+const UsersDAO = require('../dao/user-dao');
 
 module.exports = {
   async handlePost(req, res, next) {
     let response;
     try {
-      console.log('-----------RECIEVED', req);
       const reqParams = UsersRequestFormatter.format(req);
       response = await UsersDAO.create(reqParams);
       return res.status(201).json(response);
@@ -53,6 +51,19 @@ module.exports = {
     try {
       const reqParams = UsersRequestFormatter.format(req);
       response = await UsersDAO.query(reqParams);
+      return res.status(200).json(response);
+    } catch (error) {
+      logger.error(`Users Controller::handleGet ${error}`);
+      logger.debug(error);
+      return next(error);
+    }
+  },
+
+  async handleGetMe(req, res, next) {
+    let response;
+    try {
+      response = await UsersDAO.me(req.user.email);
+      response = UsersResponseFormatter.format(response);
       return res.status(200).json(response);
     } catch (error) {
       logger.error(`Users Controller::handleGet ${error}`);

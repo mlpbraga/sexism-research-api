@@ -4,9 +4,16 @@ const { models } = require('../models');
 
 const { throwBadRequest } = require('../utils/errors/bad-request');
 
-const { Users, UserGender } = models;
+const { Users, UserGender, Votes } = models;
 
 const UserDao = {
+  async me(id) {
+    const response = await Users.findOne({
+      where: { username: id },
+      include: { model: Votes, as: 'votes', attributes: ['vote_id'] },
+    });
+    return response;
+  },
   async query(reqParams) {
     const {
       id,
@@ -74,7 +81,6 @@ const UserDao = {
         userId: email,
         gender: reqParams.genderdescription,
       });
-      console.log(otherGender);
     }
     return response;
   },

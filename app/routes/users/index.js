@@ -2,7 +2,6 @@ const { celebrate } = require('celebrate');
 const { Router } = require('express');
 const {
   getSchema,
-  postSchema,
   putSchema,
   deleteSchema,
 } = require('./validation');
@@ -25,6 +24,12 @@ const authMiddleware = (req, res, next) => {
 };
 
 router.get(
+  '/me',
+  authMiddleware,
+  usersController.handleGetMe,
+);
+
+router.get(
   '/',
   celebrate(getSchema, joiOptions),
   authMiddleware,
@@ -33,7 +38,6 @@ router.get(
 
 router.post(
   '/',
-  //celebrate(postSchema, joiOptions),
   usersController.handlePost,
 );
 
