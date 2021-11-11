@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const errorHandler = require('./src/middlewares/error-handler');
-const { applyMiddlewares } = require('./src/middlewares');
+const errorHandler = require('./app/middlewares/error-handler');
+const { applyMiddlewares } = require('./app/middlewares');
 
 const {
   usersRoute,
@@ -9,7 +9,7 @@ const {
   commentsRoute,
   votesRoute,
   newsRoute,
-} = require('./src/routes');
+} = require('./app/routes');
 
 const app = express();
 
@@ -17,8 +17,9 @@ applyMiddlewares(app);
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  // res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Headers', 'Authorization, Origin, X-Requested-With, Content-Type, Accept');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Authorization, Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
   next();
 });

@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const logger = require('../utils/logger');
+const logger = require('./logger');
 
 module.exports = (sequelize, models) => {
   const {

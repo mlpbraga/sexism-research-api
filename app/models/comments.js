@@ -38,7 +38,7 @@ module.exports = (sequelize, types) => {
     timestamps: false,
   });
 
-  Comments.associate = function (models) {
+  Comments.associate = (models) => {
     const {
       Comments, News, Votes, Results,
     } = models;
@@ -55,5 +55,6 @@ module.exports = (sequelize, types) => {
         sourceKey: 'comment_id',
       });
   };
+
   return Comments;
 };

@@ -2,8 +2,6 @@ const { celebrate } = require('celebrate');
 const { Router } = require('express');
 const validationSchema = require('./validation');
 const authController = require('../../controllers/auth');
-// const authMiddleware = require('../../middlewares/auth');
-// const logger = require('../../utils/logger');
 
 const router = new Router({ mergeParams: true });
 

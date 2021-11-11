@@ -4,7 +4,7 @@ const _ = require('lodash');
 const logger = require('../utils/logger');
 const Token = require('../services/jwtoken');
 const { throwBadRequest } = require('../utils/errors/bad-request');
-const { basicAuth } = require('../../config/');
+const { basicAuth } = require('../../config');
 const { models } = require('../models');
 
 const { Users } = models;

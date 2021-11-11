@@ -3,7 +3,7 @@
   "host": "0.0.0.0",
   "log": "debug",
   "database": {
-    "host": "postgres",
+    "host": "ec2-54-84-35-171.compute-1.amazonaws.com",
     "user": "template",
     "database": "templatedb",
     "password": "templatedb",
