@@ -6,11 +6,9 @@ module.exports = {
     try {
       const response = await NewsDAO.read(req.query);
       // response formatter
-      const formattedResponse = response.map(news => {
-        return {
-          ...news.dataValues,
-        }
-      });
+      const formattedResponse = response.map((news) => ({
+        ...news.dataValues,
+      }));
       return res.status(200).json(formattedResponse);
     } catch (error) {
       logger.error(`News Controller::handleGet ${error}`);
@@ -20,7 +18,7 @@ module.exports = {
   },
   async handleGetOne(req, res, next) {
     try {
-      const response = await NewsDAO.readOne({...req.params, ...req.query});
+      const response = await NewsDAO.readOne({ ...req.params, ...req.query });
       // response formatter
       const formattedResponse = response.dataValues;
       return res.status(200).json(formattedResponse);
