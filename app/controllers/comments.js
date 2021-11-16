@@ -6,7 +6,7 @@ module.exports = {
   async handleGetRandom(req, res, next) {
     let response;
     try {
-      response = await CommentsDAO.one(req.user);
+      response = await CommentsDAO.randomOne(req.user);
       return res.status(200).json(response);
     } catch (error) {
       logger.error(`Comments Controller::handleGetRandom ${error}`);

@@ -62,6 +62,43 @@ const CommentDao = {
     });
     return chosen[0];
   },
+  async randomOne(reqParams) {
+    let response = await Comments.findAll({
+      where: {},
+      include: [
+        { model: Votes },
+        { model: News, required: true },
+      ],
+    });
+
+    // select only the comments that the user havent labeled yet
+    response = response.filter((comment) => {
+      let valid = true;
+      comment.Votes.forEach((vote) => {
+        if (vote.userId === reqParams.email) valid = false;
+      });
+      return valid;
+    });
+
+    const draw = [];
+    const notVotedYet = [];
+    const comments = [];
+
+    response.forEach((comment) => {
+      const votes = {
+        sexist: comment.Votes.filter((vote) => vote.vote === 1).length,
+        notSexist: comment.Votes.filter((vote) => vote.vote === 0).length,
+        total: comment.Votes.length,
+      };
+      if (votes.total === 0) notVotedYet.push(comment);
+      else if (votes.sexist === votes.notSexist) draw.push(comment);
+      else comments.push(comment);
+    });
+
+    if (notVotedYet.length) return notVotedYet.sort(() => Math.random() - 0.5)[0];
+    if (draw.length) return draw.sort(() => Math.random() - 0.5)[0];
+    return comments.sort(() => Math.random() - 0.5)[0];
+  },
   async read(reqParams) {
     const {
       id,
