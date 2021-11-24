@@ -90,7 +90,7 @@ const CommentDao = {
         notSexist: comment.Votes.filter((vote) => vote.vote === 0).length,
         total: comment.Votes.length,
       };
-      if (votes.total === 0) notVotedYet.push(comment);
+      if (votes.total === 0 || votes.total === 1 || votes.total === 2) notVotedYet.push(comment);
       else if (votes.sexist === votes.notSexist) draw.push(comment);
       else comments.push(comment);
     });
