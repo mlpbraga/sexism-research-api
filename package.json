@@ -30,7 +30,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "sinon": "^7.4.2",
     "sinon-chai": "^3.3.0"
   },
